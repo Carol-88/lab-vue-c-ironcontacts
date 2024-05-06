@@ -71,17 +71,53 @@ const deleteContact = (id) => {
 
 <style>
 table {
-  width: 100%;
-  border-collapse: collapse;
+ width: 100%;
+ border-collapse: separate;
+ border-spacing: 0;
+ border-radius: 10px;
+ overflow: hidden;
+ background-color: #f9f9f9; /* Color de fondo claro */
+ box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
-th,
-td {
-  border: 1px solid #ddd;
-  padding: 8px;
+th, td {
+ padding: 15px;
+ text-align: left;
+ border-bottom: 1px solid #ddd;
 }
 
 th {
-  background-color: #f2f2f2;
+ background-color: #f2f2f2; /* Color de fondo claro para las cabeceras */
+ color: #333; /* Color de texto oscuro para las cabeceras */
+}
+
+td {
+ background-color: #fff; /* Color de fondo blanco para las celdas */
+ color: #666; /* Color de texto gris oscuro para las celdas */
+}
+
+tr:hover {
+ background-color: #f2f2f2; /* Color de fondo claro al pasar el cursor */
+}
+
+button {
+ background-color: #ff9800; /* Color de fondo naranja otoñal */
+ color: black; /* Color de texto blanco */
+ border: none;
+ border-radius: 5px; /* Bordes redondeados */
+ padding: 10px 20px;
+ margin: 10px;
+ cursor: pointer;
+ box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+ transition: background-color 0.3s ease; /* Transición suave al cambiar el color de fondo */
+}
+
+button:hover {
+ background-color: #e68900; /* Color de fondo más oscuro al pasar el cursor */
+}
+
+/* Estilos para el ícono de trofeo */
+span {
+ color: #ff9800; /* Color de fondo naranja otoñal */
 }
 </style>

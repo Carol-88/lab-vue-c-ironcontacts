@@ -5,6 +5,8 @@
         <th>Picture</th>
         <th>Name</th>
         <th>Popularity</th>
+        <th>Won an Oscar</th>
+        <th>Won an Emmy</th>
       </tr>
     </thead>
     <tbody>
@@ -12,6 +14,12 @@
         <td><img :src="contact.pictureUrl" alt="Contact Picture" width="50"></td>
         <td>{{ contact.name }}</td>
         <td>{{ contact.popularity }}</td>
+        <td>
+          <span v-if="contact.wonOscar">🏆</span>
+        </td>
+        <td>
+          <span v-if="contact.wonEmmy">🏆</span>
+        </td>
       </tr>
     </tbody>
  </table>

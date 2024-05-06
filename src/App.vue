@@ -1,5 +1,5 @@
 <template>
- <section>
+  <section>
     <button @click="addRandomContact">Add random Contact</button>
     <button @click="sortByPopularity">Sort by popularity</button>
     <button @click="sortByName">Sort by name</button>
@@ -11,11 +11,14 @@
           <th>Popularity</th>
           <th>Won an Oscar</th>
           <th>Won an Emmy</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="contact in contacts" :key="contact.id">
-          <td><img :src="contact.pictureUrl" alt="Contact Picture" width="50"></td>
+          <td>
+            <img :src="contact.pictureUrl" alt="Contact Picture" width="50" />
+          </td>
           <td>{{ contact.name }}</td>
           <td>{{ contact.popularity }}</td>
           <td>
@@ -24,24 +27,30 @@
           <td>
             <span v-if="contact.wonEmmy">🏆</span>
           </td>
+          <td>
+            <button @click="deleteContact(contact.id)">Delete</button>
+          </td>
         </tr>
       </tbody>
     </table>
- </section>
+  </section>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import contactsData from './contacts.json';
+import { ref } from "vue";
+import contactsData from "./contacts.json";
 
 const contacts = ref(contactsData.slice(0, 5));
 const randomContacts = ref(contactsData.slice(5));
 
 const addRandomContact = () => {
   if (randomContacts.value.length > 0) {
-    const randomContact = randomContacts.value.splice(Math.floor(Math.random() * randomContacts.value.length), 1)[0];
+    const randomContact = randomContacts.value.splice(
+      Math.floor(Math.random() * randomContacts.value.length),
+      1
+    )[0];
     contacts.value.push(randomContact);
- }
+  }
 };
 
 const sortByPopularity = () => {
@@ -51,20 +60,28 @@ const sortByPopularity = () => {
 const sortByName = () => {
   contacts.value.sort((a, b) => a.name.localeCompare(b.name));
 };
+
+const deleteContact = (id) => {
+  const index = contacts.value.findIndex((contact) => contact.id === id);
+  if (index !== -1) {
+    contacts.value.splice(index, 1);
+  }
+};
 </script>
 
 <style>
 table {
- width: 100%;
- border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
-th, td {
- border: 1px solid #ddd;
- padding: 8px;
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
 }
 
 th {
- background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 </style>

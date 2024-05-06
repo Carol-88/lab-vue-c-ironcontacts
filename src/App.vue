@@ -1,6 +1,8 @@
 <template>
  <section>
     <button @click="addRandomContact">Add random Contact</button>
+    <button @click="sortByPopularity">Sort by popularity</button>
+    <button @click="sortByName">Sort by name</button>
     <table>
       <thead>
         <tr>
@@ -40,6 +42,14 @@ const addRandomContact = () => {
     const randomContact = randomContacts.value.splice(Math.floor(Math.random() * randomContacts.value.length), 1)[0];
     contacts.value.push(randomContact);
  }
+};
+
+const sortByPopularity = () => {
+  contacts.value.sort((a, b) => b.popularity - a.popularity);
+};
+
+const sortByName = () => {
+  contacts.value.sort((a, b) => a.name.localeCompare(b.name));
 };
 </script>
 
